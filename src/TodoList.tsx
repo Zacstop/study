@@ -1,23 +1,19 @@
 import axios from "axios";
-import React, { useState } from "react";
 import { TodoItemListProps } from "./lib/interfacies";
 import { useQuery } from "react-query";
 
 const getData = async () => {
   const { data } = await axios.get<TodoItemListProps[]>(
-    "https://jsonplaceholder.typicode.com/todos"
+    "https://jsonplaceholder.typicode.com/posts/1/comments"
   );
   return data;
 };
 
 export default function TodoList() {
-  const { data, isLoading, isError, error } = useQuery<
-    TodoItemListProps[],
-    Error
-  >("todos", getData);
-  //   const [todos, setTodos] = useState(initialTodo);
-
-  console.log(data);
+  const { data, isLoading, isError } = useQuery<TodoItemListProps[], Error>(
+    "todos",
+    getData
+  );
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -33,8 +29,11 @@ export default function TodoList() {
         <ul key={m.id}>
           <li>
             <label>
-              <input type="checkbox" defaultChecked={m.completed} />
-              {m.title}
+              {/* <input type="checkbox" /> */}
+              <p>{m.name}</p>
+              <p>{m.email}</p>
+              <p>{m.body}</p>
+              <br />
             </label>
           </li>
         </ul>

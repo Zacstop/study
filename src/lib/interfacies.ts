@@ -1,8 +1,9 @@
 export interface TodoItemListProps {
-  userId: number;
+  postId: number;
   id: number;
-  title: string;
-  completed: boolean;
+  name: string;
+  email: string;
+  body: string;
 }
 
 export interface TodoItmes {

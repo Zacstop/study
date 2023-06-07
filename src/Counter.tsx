@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelecter } from "./app/hooks";
 export default function Todo() {
   const dispatch = useAppDispatch();
   const count = useAppSelecter((state) => {
-    console.log(state);
+    // console.log(state);
     return state.counter.value;
   });
 
